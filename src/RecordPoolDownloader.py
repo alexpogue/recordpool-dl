@@ -44,7 +44,8 @@ class RecordPoolDownloader:
         print(" 0: Single page")
         print(">0: Multiple pages")
         try:
-            number = int(input())
+            #number = int(input())
+            number = 1
             print()
             if number > 0:
                 self.multi_page_loop(number)
@@ -59,8 +60,9 @@ class RecordPoolDownloader:
         while True:
             print_bold(f"--- Page: {self.pool.current_page_number} ---")
             try:
-                number = int(input("Give number of tracks to download from current page (0 = all)\n"))
-                number = max(0, number)
+                #number = int(input("Give number of tracks to download from current page (0 = all)\n"))
+                #number = max(0, number)
+                number = 0
             except ValueError:
                 number = 0
 
@@ -70,8 +72,8 @@ class RecordPoolDownloader:
                 break
 
             self.play_notification_sound()
-            if input("Continue?\n").lower() not in ("y", "1"):
-                break
+            #if input("Continue?\n").lower() not in ("y", "1"):
+            #    break
 
     def multi_page_loop(self, pages=1):
         """Download multiple pages automatically."""
@@ -87,7 +89,8 @@ class RecordPoolDownloader:
         self.play_notification_sound()
         print_bold("Continue for pages?")
         try:
-            num = int(input())
+            #num = int(input())
+            num = 1
             if num > 0:
                 self.multi_page_loop(num)
         except ValueError:
