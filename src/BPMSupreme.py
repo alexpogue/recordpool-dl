@@ -141,7 +141,7 @@ class BPMSupreme(RecordPool):
             track_version_element_list = self.get_track_version_element_list(song)
 
             #DIR = '/Users/alex/Desktop/DJ MUSIC SORT/BPMSUPREME/'
-            DIR = '/Volumes/SANDISK5/DJ MUSIC SORT/BPMSUPREME/'
+            DIR = '/Volumes/SANDISK5/DJ MUSIC SORT/BPMSUPREME'
             pre_num_files_in_directory = self.get_num_files_in_directory(DIR)
 
             downloaded_something = False
@@ -212,7 +212,12 @@ class BPMSupreme(RecordPool):
         try:
             container = self.driver.find_element(By.CLASS_NAME, "paging_paging__next-btn__0IX8t")
             #element = container.find_element_by_xpath("//*[contains(text(), '›')]")
-            self.click(container)
+            is_disabled = container.get_attribute('disabled')
+            print(f'is_disabled = {is_disabled}')
+            if is_disabled:
+              return False
+            else:
+              self.click(container)
         except (
             ElementNotInteractableException,
             ElementClickInterceptedException,
