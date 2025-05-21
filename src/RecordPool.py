@@ -40,11 +40,14 @@ class RecordPool:
         # TODO: use Pathlib instead of os.path
         user_path = os.path.expanduser("~")
         if self.platform.is_linux():
-            print_error_and_exit("Linux is not yet supported")
+            #print_error_and_exit("Linux is not yet supported")
+            download_root = os.path.join("/mnt", "d", "DJMUSIC")
+            #download_root = os.path.join(user_path, "personal", "DJMUSICSORT")
+            chrome_profile = os.path.join(user_path, ".config", "google-chrome", "Default")
 
         if self.platform.is_mac():
             #download_root = os.path.join(user_path, "Desktop", "DJ MUSIC SORT")
-            download_root = os.path.join("/Volumes", "SANDISK5", "DJ MUSIC SORT")
+            download_root = os.path.join("/mnt", "c", "Users", "M262907", "Desktop", "DJMUSICSORT")
             chrome_profile = os.path.join(user_path, r"Library/Application Support/Google/Chrome")
         elif self.platform.is_windows():
             download_root = os.path.join("D:\\", "Dropbox", "DJ MUSIC SORT")
